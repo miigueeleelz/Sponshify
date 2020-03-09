@@ -20,3 +20,10 @@ post "/songs" do
 
   return response
 end
+
+get "/songs" do
+  controller = SongController.instance
+  response = controller.get
+
+  return response
+end
