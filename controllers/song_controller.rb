@@ -30,4 +30,11 @@ class SongController
     return [422, {}, response.to_json]
   end
 
+  def get
+    response = {
+      songs: Song.all
+    }
+    return [200, {}, response.to_json]
+  end
+
 end
