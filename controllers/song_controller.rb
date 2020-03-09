@@ -25,7 +25,7 @@ class SongController
     end
 
     response = {
-      errors: result.errors.full_messages
+      errors: result.errors
     }
     return [422, {}, response.to_json]
   end
