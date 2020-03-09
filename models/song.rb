@@ -14,7 +14,7 @@ class Song
   field :album, type: String
   field :total_views, type: Integer
 
-  validates :code, presence: true
+  validates :code, presence: true, uniqueness: true
   validates :title, presence: true
   validates :artist, presence: true
   validates :release_year, presence: true
