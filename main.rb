@@ -1,6 +1,5 @@
 require "sinatra"
 require "mongoid"
-require "json"
 
 require_relative "./controllers/song_controller"
 
