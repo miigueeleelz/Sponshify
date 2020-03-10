@@ -32,4 +32,13 @@ class SongController
     return response.to_json
   end
 
+  def update(id, params)
+    song = Song.where(id: id).first
+    halt(404, { message: "Song not found" }.to_json) unless song
+
+    song.update_attributes params
+
+    return song
+  end
+
 end
