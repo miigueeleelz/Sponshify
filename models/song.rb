@@ -23,4 +23,6 @@ class Song
   validates :album, presence: true
   validates :total_views, presence: true
 
+  scope :code, -> (code) { where(code: code) }
+
 end
