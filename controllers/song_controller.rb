@@ -41,4 +41,11 @@ class SongController
     return song
   end
 
+  def delete(id)
+    song = Song.where(id: id).first
+    halt(404, { message: "Song not found" }.to_json) unless song
+
+    song.destroy if song
+  end
+
 end
