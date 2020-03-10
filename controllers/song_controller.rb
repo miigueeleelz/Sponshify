@@ -6,7 +6,7 @@ class SongController
   include Singleton
 
   def store(song)
-    result = Song.create(
+    return Song.create(
       code: song["code"],
       title: song["title"],
       artist: song["artist"],
@@ -16,18 +16,6 @@ class SongController
       album: song["album"],
       total_views: 0,
     )
-
-    if result.valid?
-      response = {
-        message: 'Song created successfully'
-      }
-      return [201, {}, response.to_json]
-    end
-
-    response = {
-      errors: result.errors
-    }
-    return [422, {}, response.to_json]
   end
 
   def get(code = nil)

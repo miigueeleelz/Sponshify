@@ -16,9 +16,19 @@ post "/songs" do
   payload = JSON.parse request.body.read
 
   controller = SongController.instance
-  response = controller.store payload
+  song = controller.store payload
 
-  return response
+  if song.valid?
+    response.headers['Location'] = "#{request.base_url}/songs/#{song.id}"
+    status 201
+  else
+    response = {
+      errors: song.errors
+    }
+  
+    status 422
+    body response.to_json
+  end
 end
 
 get "/songs" do
