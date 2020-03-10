@@ -30,9 +30,16 @@ class SongController
     return [422, {}, response.to_json]
   end
 
-  def get
+  def get(code = nil)
+    if code == nil
+      response = {
+        songs: Song.all
+      }
+      return [200, {}, response.to_json]
+    end
+
     response = {
-      songs: Song.all
+      song: Song.where(code: code).first
     }
     return [200, {}, response.to_json]
   end

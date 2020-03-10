@@ -23,7 +23,8 @@ end
 
 get "/songs" do
   controller = SongController.instance
-  response = controller.get
-
-  return response
+  if params['code']
+    return controller.get params['code']
+  end
+  return controller.get
 end
