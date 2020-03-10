@@ -57,3 +57,11 @@ patch "/songs/:id" do | id |
     body response.to_json
   end
 end
+
+delete "/songs/:id" do | id |
+  puts id
+  controller = SongController.instance
+  controller.delete(id)
+
+  status 204
+end
