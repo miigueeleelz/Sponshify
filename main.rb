@@ -39,3 +39,21 @@ get "/songs" do
     body controller.get
   end
 end
+
+patch "/songs/:id" do | id |
+  payload = JSON.parse request.body.read
+  controller = SongController.instance
+  song = controller.update(id, payload)
+
+  if song.valid?
+    status 200
+    body song.to_json
+  else
+    response = {
+      errors: song.errors
+    }
+  
+    status 422
+    body response.to_json
+  end
+end
