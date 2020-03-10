@@ -23,13 +23,13 @@ class SongController
       response = {
         songs: Song.all
       }
-      return [200, {}, response.to_json]
+    else
+      response = {
+        song: Song.where(code: code).first
+      }
     end
 
-    response = {
-      song: Song.where(code: code).first
-    }
-    return [200, {}, response.to_json]
+    return response.to_json
   end
 
 end

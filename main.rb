@@ -32,9 +32,11 @@ post "/songs" do
 end
 
 get "/songs" do
+  status 200
   controller = SongController.instance
   if params['code']
-    return controller.get params['code']
+    body controller.get params['code']
+  else
+    body controller.get
   end
-  return controller.get
 end
